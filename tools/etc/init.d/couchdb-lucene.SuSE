@@ -52,7 +52,6 @@ case "$1" in
         ;;
 
   restart|force-reload)
-        echo -n "Restarting $DESC"
         $0 stop
         $0 start
 
