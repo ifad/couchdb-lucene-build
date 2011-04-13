@@ -80,6 +80,15 @@ If you checked out this repository in directories other than
 `/opt/couchdb-lucene-build`, then you'll need to adjust the `DAEMON`
 variable and make it point to the location of the `bin/run` script.
 
+The daemon is started as user `daemon` by default, you can change it
+by setting the `USER` variable in the `/etc/default/couchdb-lucene`
+file. Make sure that the user has write access to the `indexes` and
+`logs` directories.
+
+You can configure `indexes` directory in the `conf/couchdb-lucene.ini`
+configuration file, while the location of the log file is configured
+in the `conf/log4j.xml` file.
+
 
 = Maintenance
 

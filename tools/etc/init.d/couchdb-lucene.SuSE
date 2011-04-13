@@ -17,6 +17,7 @@ NAME="couchdb-lucene"
 DAEMON=/opt/couchdb-lucene-build/bin/run
 PIDFILE=/var/run/$NAME.pid
 DAEMON_ARGS="$PIDFILE"
+USER=daemon
 
 # Read configuration variable file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
@@ -30,7 +31,7 @@ export PIDFILE
 case "$1" in
   start)
 	echo -n "Starting $DESC"
-	startproc -p $PIDFILE $DAEMON
+	startproc -u $USER -p $PIDFILE $DAEMON
         rc_status -v
 	;;
 
