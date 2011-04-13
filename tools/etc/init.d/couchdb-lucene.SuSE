@@ -16,7 +16,6 @@ DESC="CouchDB-Lucene Full Text Indexer Service"
 NAME="couchdb-lucene"
 DAEMON=/opt/couchdb-lucene-build/bin/run
 PIDFILE=/var/run/$NAME.pid
-DAEMON_ARGS="$PIDFILE"
 USER=daemon
 
 # Read configuration variable file if it is present
