@@ -33,19 +33,21 @@ case "$1" in
         touch $PIDFILE
         chown $USER $PIDFILE
 
-        startproc -u $USER -p $PIDFILE $DAEMON
+        if ! checkproc -p $PIDFILE `which java`; then
+          start_daemon -u $USER -p $PIDFILE $DAEMON
+        fi
         rc_status -v
         ;;
 
   stop)
         echo -n "Stopping $DESC"
-        killproc -p $PIDFILE -TERM $DAEMON
+        killproc -p $PIDFILE -TERM `which java`
         rc_status -v
         ;;
 
   status)
         echo -n "Checking for $DESC"
-        checkproc -p $PIDFILE $DAEMON
+        checkproc -p $PIDFILE `which java`
         rc_status -v
         ;;
 
