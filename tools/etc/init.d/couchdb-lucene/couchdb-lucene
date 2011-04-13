@@ -6,18 +6,18 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Initscript for CouchDB-Lucene
-# Description:       Initscript for CouchDB-Lucene
+# Description:       Initscript for CouchDB-Lucene on Debian systems
 ### END INIT INFO
 
 # Author: Sebastian Cohnen <sebastian.cohnen@gmail.com>
-#
+# Cleanup: Marcello Barnaba <vjt@openssl.it>
 
 # Do NOT "set -e"
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DESC="Description of the service"
+DESC="CouchDB-Lucene Full Text Indexer Service"
 NAME="couchdb-lucene"
-DAEMON=/usr/local/couchdb-lucene-0.5.5/bin/run
+DAEMON=/opt/couchdb-lucene-build/bin/run
 PIDFILE=/var/run/$NAME.pid
 DAEMON_ARGS="$PIDFILE"
 SCRIPTNAME=/etc/init.d/$NAME
@@ -49,9 +49,6 @@ do_start()
 	PIDFILE=$PIDFILE start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON -- \
 		$DAEMON_ARGS \
 		|| return 2
-	# Add code here, if necessary, that waits for the process to be ready
-	# to handle requests from services started subsequently which depend
-	# on this one.  As a last resort, sleep for some time.
 }
 
 #
@@ -67,6 +64,7 @@ do_stop()
 	start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE
 	RETVAL="$?"
 	[ "$RETVAL" = 2 ] && return 2
+
 	# Wait for children to finish too if this is a daemon that forks
 	# and if the daemon is only ever run from this initscript.
 	# If the above conditions are not satisfied then add some other code
@@ -80,18 +78,6 @@ do_stop()
 	return "$RETVAL"
 }
 
-#
-# Function that sends a SIGHUP to the daemon/service
-#
-do_reload() {
-	#
-	# If the daemon can reload its configuration without
-	# restarting (for example, when it is sent a SIGHUP),
-	# then implement that here.
-	#
-	start-stop-daemon --stop --signal 1 --quiet --pidfile $PIDFILE --name $NAME
-	return 0
-}
 
 case "$1" in
   start)
@@ -119,20 +105,8 @@ case "$1" in
          log_success_msg "$NAME is running"
        fi
        ;;
-  #reload|force-reload)
-	#
-	# If do_reload() is not implemented then leave this commented out
-	# and leave 'force-reload' as an alias for 'restart'.
-	#
-	#log_daemon_msg "Reloading $DESC" "$NAME"
-	#do_reload
-	#log_end_msg $?
-	#;;
+
   restart|force-reload)
-	#
-	# If the "reload" option is implemented then remove the
-	# 'force-reload' alias
-	#
 	log_daemon_msg "Restarting $DESC" "$NAME"
 	do_stop
 	case "$?" in
@@ -151,7 +125,6 @@ case "$1" in
 	esac
 	;;
   *)
-	#echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
 	echo "Usage: $SCRIPTNAME {start|stop|status|restart|force-reload}" >&2
 	exit 3
 	;;
