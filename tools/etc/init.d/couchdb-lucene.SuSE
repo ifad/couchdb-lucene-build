@@ -41,7 +41,7 @@ case "$1" in
 
   stop)
         echo -n "Stopping $DESC"
-        killproc -p $PIDFILE -TERM `which java`
+        killproc -p $PIDFILE -TERM -t 10 `which java`
         rc_status -v
         ;;
 
@@ -53,6 +53,7 @@ case "$1" in
 
   restart|force-reload)
         $0 stop
+        sleep 1
         $0 start
 
         rc_status -v
