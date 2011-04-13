@@ -89,6 +89,12 @@ You can configure `indexes` directory in the `conf/couchdb-lucene.ini`
 configuration file, while the location of the log file is configured
 in the `conf/log4j.xml` file.
 
+Of course, the easiest way is to use symlinks:
+
+   mkdir -p /var/{lib,log}/couchdb-lucene
+   chown daemon: /var/{lib,log}/couchdb-lucene
+   ln -s /var/lib/couchdb-lucene indexes
+   ln -s /var/log/couchdb-lucene logs
 
 = Maintenance
 
