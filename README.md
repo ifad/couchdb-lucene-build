@@ -1,4 +1,5 @@
-= IFAD build of CouchDB Lucene
+IFAD build of CouchDB Lucene
+============================
 
 This repository contains a Java bytecode build of
 [couchdb-lucene](https://github.com/rnewson/couchdb-lucene) at version
@@ -8,7 +9,8 @@ It is used by internal [IFAD](http://www.ifad.org) projects, but it can be
 used by anyone finds this binary build useful - of course! :-).
 
 
-= Minimum System Requirements
+Minimum System Requirements
+===========================
 
 Java 1.5 (or above) is required; the <strike>Sun</strike> Oracle version is
 recommended as it's regularly tested against. If you're on OSX &gt;= 10.5
@@ -16,7 +18,8 @@ you're set, if you're on Debian install `sun-java6-jre`, if you're on SuSE
 install `java-1_6_0-sun`.
 
 
-= The Big Picture
+The Big Picture
+===============
 
 couchdb-lucene parses `conf/couchdb-lucene.ini`, listens onto the configured
 TCP socket and connects to the configured couchdb servers, in order to use
@@ -26,13 +29,16 @@ CouchDB spawns the `tools/couchdb-external-hook.py` script that connects to
 the `couchdb-lucene` socket and provides full-text indexing services under
 an HTTP path - `_fti` by default.
 
-= Development: how to get up and running quickly
+Development: how to get up and running quickly
+==============================================
 
-== Download the couchdb lucene daemon
+Download the couchdb lucene build
+---------------------------------
 
-    git clone https://github.com/ifad/couchdb-lucene-build
+    git clone https://github.com/ifad/couchdb-lucene-build.git
 
-== Configure CouchDB
+Configure CouchDB
+-----------------
 
 Copy `tools/etc/couchdb/local.d/lucene.ini` to your `couchdb/local.d`
 directory, updating the paths in the `fti` directive with the correct
@@ -40,7 +46,8 @@ ones for your system.
 
 Restart CouchDB and you're set.
 
-== Run couchdb-lucene
+Run couchdb-lucene
+------------------
 
 Enter the cloned repository directory and execute `./bin/run`
 
@@ -56,7 +63,8 @@ view creation under the `_fti` namespace and then querying it as usual via
 HTTP.
 
 
-== Distribution and authentication
+Distribution and authentication
+-------------------------------
 
 If couchdb-lucene and couchdb run on different machines, you'll need to add
 some options to the fti hook. See the aforementioned config file and the
@@ -70,7 +78,8 @@ configuration file:
     url=http://foo:bar@localhost:5984/
 
 
-= Deployment
+Deployment
+==========
 
 There are two init.d scripts in the `tools/etc/init.d directory`, one
 for Debian systems and one for SuSE ones.
@@ -96,7 +105,8 @@ Of course, the easiest way is to use symlinks:
    ln -s /var/lib/couchdb-lucene indexes
    ln -s /var/log/couchdb-lucene logs
 
-= Maintenance
+Maintenance
+===========
 
 For optimal query speed you can optimize your indexes. This causes the index
 to be rewritten into a single segment.
@@ -113,18 +123,20 @@ will probably have old indexes lying around on disk. To remove all of them:
     curl -X POST http://localhost:5984/<databasename>/_fti/_cleanup
 
 
-= Issue Tracking
+Issue Tracking
+==============
 
 Issue tracking at [github](http://github.com/ifad/couchdb-lucene-build/issues)
 
 
-= Acknowledgments
+Acknowledgments
+===============
 
-[Robert Newson](https://github.com/rnewson) for the excellent couchdb-lucene
-software
-[Amedeo Paglione](https://github.com/amedeo) for the endless pushing
-of CouchDB here at IFAD
-[Simone Carletti](https://github.com/weppos) for the
-endless bashing of CouchDB - you always need a second opinion! :-)
+* [Robert Newson](https://github.com/rnewson) for the excellent couchdb-lucene
+  software
+* [Amedeo Paglione](https://github.com/amedeo) for the endless CouchDB pushing
+  here at IFAD
+* [Simone Carletti](https://github.com/weppos) for the endless CouchDB bashing:
+  you always need a second opinion! :-)
 
 `EOF`
