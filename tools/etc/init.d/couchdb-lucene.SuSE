@@ -30,16 +30,19 @@ export PIDFILE
 
 case "$1" in
   start)
-	echo -n "Starting $DESC"
-	startproc -u $USER -p $PIDFILE $DAEMON
+        echo -n "Starting $DESC"
+        touch $PIDFILE
+        chown $USER $PIDFILE
+
+        startproc -u $USER -p $PIDFILE $DAEMON
         rc_status -v
-	;;
+        ;;
 
   stop)
-	echo -n "Stopping $DESC"
-	killproc -p $PIDFILE -TERM $DAEMON
+        echo -n "Stopping $DESC"
+        killproc -p $PIDFILE -TERM $DAEMON
         rc_status -v
-	;;
+        ;;
 
   status)
         echo -n "Checking for $DESC"
@@ -48,15 +51,16 @@ case "$1" in
         ;;
 
   restart|force-reload)
-	echo -n "Restarting $DESC"
+        echo -n "Restarting $DESC"
         $0 stop
         $0 start
 
         rc_status -v
-	;;
+        ;;
+
   *)
-	echo "Usage: $0 {start|stop|status|restart}" >&2
-	exit 1
-	;;
+        echo "Usage: $0 {start|stop|status|restart}" >&2
+        exit 1
+        ;;
 esac
 rc_exit
