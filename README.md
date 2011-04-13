@@ -70,7 +70,14 @@ HTTP.
 
 = Deployment
 
-TODO
+There are two init.d scripts in the `tools/etc/init.d directory`, one
+for Debian systems and one for SuSE ones.
+
+Both of them read an `/etc/default/couchdb-lucene` file if it exists.
+If you checked out this repository in directories other than
+`/opt/couchdb-lucene-build`, then you'll need to adjust the `DAEMON`
+variable and make it point to the location of the `bin/run` script.
+
 
 = Maintenance
 

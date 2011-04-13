@@ -1,8 +1,8 @@
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          couchdb-lucene
-# Required-Start:    $remote_fs $syslog
-# Required-Stop:     $remote_fs $syslog
+# Required-Start:    $network $syslog
+# Required-Stop:     $network $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Initscript for CouchDB-Lucene
@@ -22,11 +22,11 @@ PIDFILE=/var/run/$NAME.pid
 DAEMON_ARGS="$PIDFILE"
 SCRIPTNAME=/etc/init.d/$NAME
 
-# Exit if the package is not installed
-[ -x "$DAEMON" ] || exit 0
-
 # Read configuration variable file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
+
+# Exit if the package is not installed
+[ -x "$DAEMON" ] || exit 0
 
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
@@ -34,6 +34,8 @@ SCRIPTNAME=/etc/init.d/$NAME
 # Define LSB log_* functions.
 # Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
 . /lib/lsb/init-functions
+
+export PIDFILE
 
 #
 # Function that starts the daemon/service
@@ -44,9 +46,9 @@ do_start()
 	#   0 if daemon has been started
 	#   1 if daemon was already running
 	#   2 if daemon could not be started
-	PIDFILE=$PIDFILE start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
+	start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
 		|| return 1
-	PIDFILE=$PIDFILE start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON -- \
+	start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON -- \
 		$DAEMON_ARGS \
 		|| return 2
 }
