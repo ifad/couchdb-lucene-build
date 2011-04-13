@@ -100,10 +100,10 @@ in the `conf/log4j.xml` file.
 
 Of course, the easiest way is to use symlinks:
 
-   mkdir -p /var/{lib,log}/couchdb-lucene
-   chown daemon: /var/{lib,log}/couchdb-lucene
-   ln -s /var/lib/couchdb-lucene indexes
-   ln -s /var/log/couchdb-lucene logs
+    mkdir -p /var/{lib,log}/couchdb-lucene
+    chown daemon: /var/{lib,log}/couchdb-lucene
+    ln -s /var/lib/couchdb-lucene indexes
+    ln -s /var/log/couchdb-lucene logs
 
 Maintenance
 ===========
