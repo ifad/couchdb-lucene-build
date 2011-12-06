@@ -46,6 +46,13 @@ ones for your system.
 
 Restart CouchDB and you're set.
 
+Configure couchdb-lucene
+------------------------
+
+Copy `conf/couchdb-lucene.ini.example` into `conf/couchdb-lucene.ini` and edit
+as will. The default configuration listens on localhost, port 5985 and assumes
+that a CouchDB instance is running on localhost, without requiring a password.
+
 Run couchdb-lucene
 ------------------
 
