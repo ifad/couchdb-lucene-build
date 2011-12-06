@@ -1,3 +1,4 @@
 conf/couchdb-lucene.ini
+hs_err*
 /indexes
 /logs
