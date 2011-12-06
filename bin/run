@@ -15,6 +15,6 @@ done
 if [ -z $PIDFILE ]; then
   exec java $JAVA_OPTS -cp $CLASSPATH $CLASS
 else
-  java $JAVA_OPTS -cp $CLASSPATH $CLASS >/dev/null &
+  java $JAVA_OPTS -cp $CLASSPATH $CLASS &
   echo $! > $PIDFILE
 fi
