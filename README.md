@@ -8,13 +8,16 @@ This repository contains a Java bytecode build of
 It is used by internal [IFAD](http://www.ifad.org) projects, but it can be
 used by anyone finds this binary build useful - of course! :-).
 
+This build includes the full ooxml-schemas from the Apache POI project,
+taken from http://mvnrepository.com/artifact/org.apache.poi/ooxml-schemas
+so it should index every possible Microsoft Office attachment.
 
 Minimum System Requirements
 ===========================
 
 Java 1.5 (or above) is required; the <strike>Sun</strike> Oracle version is
 recommended as it's regularly tested against. If you're on OSX &gt;= 10.5
-you're set, if you're on Debian install `sun-java6-jre`, if you're on SuSE
+you're set, if you're on Debian install `openjdk-6-jre`, if you're on SuSE
 install `java-1_6_0-sun`.
 
 
