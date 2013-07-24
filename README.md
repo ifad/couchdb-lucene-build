@@ -2,8 +2,8 @@ IFAD build of CouchDB Lucene
 ============================
 
 This repository contains a Java bytecode build of
-[couchdb-lucene](https://github.com/rnewson/couchdb-lucene) at version
-[bc1bd8f](https://github.com/rnewson/couchdb-lucene/tree/bc1bd8f).
+[ifad/couchdb-lucene](https://github.com/ifad/couchdb-lucene) at version
+[a38c0067](https://github.com/ifad/couchdb-lucene/tree/a38c0067).
 
 It is used by internal [IFAD](http://www.ifad.org) projects, but it can be
 used by anyone finds this binary build useful - of course! :-).
@@ -19,7 +19,6 @@ Java 1.5 (or above) is required; the <strike>Sun</strike> Oracle version is
 recommended as it's regularly tested against. If you're on OSX &gt;= 10.5
 you're set, if you're on Debian install `openjdk-6-jre`, if you're on SuSE
 install `java-1_6_0-sun`.
-
 
 The Big Picture
 ===============
