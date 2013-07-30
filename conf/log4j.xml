@@ -28,7 +28,7 @@
   <!-- Output to file -->
   <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
     <param name="file" value="logs/couchdb-lucene.log"/>
-    <param name="MaxFileSize" value="100KB"/>
+    <param name="MaxFileSize" value="10000KB"/>
     <!-- Keep one backup file -->
     <param name="MaxBackupIndex" value="1"/>
     <layout class="org.apache.log4j.PatternLayout">
