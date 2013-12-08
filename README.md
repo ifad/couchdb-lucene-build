@@ -3,14 +3,12 @@ IFAD build of CouchDB Lucene
 
 This repository contains a Java bytecode build of
 [ifad/couchdb-lucene](https://github.com/ifad/couchdb-lucene) at version
-[a38c0067](https://github.com/ifad/couchdb-lucene/tree/a38c0067).
+[4528f78e](https://github.com/ifad/couchdb-lucene/tree/4528f78e).
 
 It is used by internal [IFAD](http://www.ifad.org) projects, but it can be
 used by anyone finds this binary build useful - of course! :-).
 
-This build includes the full ooxml-schemas from the Apache POI project,
-taken from http://mvnrepository.com/artifact/org.apache.poi/ooxml-schemas
-so it should index every possible Microsoft Office attachment.
+If you use OpenSuSE, we've built an RPM package on [the OpenSuSE Build Service](https://build.opensuse.org/package/show/home:vjt:ifad/couchdb-lucene).
 
 Minimum System Requirements
 ===========================
