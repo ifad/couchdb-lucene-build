@@ -15,8 +15,8 @@ Minimum System Requirements
 
 Java 1.5 (or above) is required; the <strike>Sun</strike> Oracle version is
 recommended as it's regularly tested against. If you're on OSX &gt;= 10.5
-you're set, if you're on Debian install `openjdk-6-jre`, if you're on SuSE
-install `java-1_6_0-sun`.
+you're set, if you're on Debian install `openjdk-7-jre`, if you're on SuSE
+install `java-1_7_0-openjdk`.
 
 The Big Picture
 ===============
