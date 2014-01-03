@@ -3,7 +3,7 @@ IFAD build of CouchDB Lucene
 
 This repository contains a Java bytecode build of
 [ifad/couchdb-lucene](https://github.com/ifad/couchdb-lucene) at version
-[4528f78e](https://github.com/ifad/couchdb-lucene/tree/4528f78e).
+[7d228e3a](https://github.com/ifad/couchdb-lucene/tree/7d228e3a).
 
 It is used by internal [IFAD](http://www.ifad.org) projects, but it can be
 used by anyone finds this binary build useful - of course! :-).
