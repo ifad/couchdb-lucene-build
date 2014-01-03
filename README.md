@@ -8,7 +8,8 @@ This repository contains a Java bytecode build of
 It is used by internal [IFAD](http://www.ifad.org) projects, but it can be
 used by anyone finds this binary build useful - of course! :-).
 
-If you use OpenSuSE, we've built an RPM package on [the OpenSuSE Build Service](https://build.opensuse.org/package/show/home:vjt:ifad/couchdb-lucene).
+If you use OpenSuSE, we've built an RPM package on [the OpenSuSE Build
+Service](https://build.opensuse.org/package/show/home:vjt:ifad/couchdb-lucene).
 
 Minimum System Requirements
 ===========================
