@@ -3,7 +3,7 @@ IFAD build of CouchDB Lucene
 
 This repository contains a Java bytecode build of
 [ifad/couchdb-lucene](https://github.com/ifad/couchdb-lucene) at version
-[7d228e3a](https://github.com/ifad/couchdb-lucene/tree/7d228e3a).
+[4cbeef84](https://github.com/ifad/couchdb-lucene/tree/4cbeef84).
 
 It is used by internal [IFAD](http://www.ifad.org) projects, but it can be
 used by anyone finds this binary build useful - of course! :-).
@@ -14,7 +14,7 @@ Service](https://build.opensuse.org/package/show/home:vjt:ifad/couchdb-lucene).
 Minimum System Requirements
 ===========================
 
-Java 1.5 (or above) is required; the <strike>Sun</strike> Oracle version is
+Java 1.6 (or above) is required; the <strike>Sun</strike> Oracle version is
 recommended as it's regularly tested against. If you're on OSX &gt;= 10.5
 you're set, if you're on Debian install `openjdk-7-jre`, if you're on SuSE
 install `java-1_7_0-openjdk`.
@@ -26,9 +26,8 @@ couchdb-lucene parses `conf/couchdb-lucene.ini`, listens onto the configured
 TCP socket and connects to the configured couchdb servers, in order to use
 CouchDB's `_changes` facility to keep the lucene index up to date.
 
-CouchDB spawns the `tools/couchdb-external-hook.py` script that connects to
-the `couchdb-lucene` socket and provides full-text indexing services under
-an HTTP path - `_fti` by default.
+CouchDB uses a `proxy_handler` to connect to `couchdb-lucene`'s socket and
+provides full-text indexing services under an HTTP path - `/_fti` by default.
 
 Development: how to get up and running quickly
 ==============================================
@@ -41,11 +40,8 @@ Download the couchdb lucene build
 Configure CouchDB
 -----------------
 
-Copy `tools/etc/couchdb/local.d/lucene.ini` to your `couchdb/local.d`
-directory, updating the paths in the `fti` directive with the correct
-ones for your system.
-
-Restart CouchDB and you're set.
+Copy `vendor/couchdb/local.d/lucene.ini` to your `couchdb/local.d`
+directory. Restart CouchDB. All set.
 
 Configure couchdb-lucene
 ------------------------
@@ -74,9 +70,9 @@ HTTP.
 Distribution and authentication
 -------------------------------
 
-If couchdb-lucene and couchdb run on different machines, you'll need to add
-some options to the fti hook. See the aforementioned config file and the
-`conf/couchdb-lucene.ini` file for details.
+If couchdb-lucene and couchdb run on different machines, just specify the
+CouchDB URL in the `conf/couchdb-lucene.ini` file, and CouchDB-Lucene URL
+in the `local.d/lucene.ini` file.
 
 By default couchdb-lucene does not attempt to authenticate to CouchDB. If your
 CouchDB's requires it, then set the credentials in the `couchdb-lucene.ini`
@@ -89,7 +85,10 @@ configuration file:
 Deployment
 ==========
 
-There are two init.d scripts in the `tools/etc/init.d directory`, one
+For systemd units, have a look at [the prebuilt OpenSuSE package](
+https://build.opensuse.org/package/show/home:vjt:ifad/couchdb-lucene).
+
+For sysvinit, there are two scripts in the `vendor/init.d directory`, one
 for Debian systems and one for SuSE ones.
 
 Both of them read an `/etc/default/couchdb-lucene` file if it exists.
