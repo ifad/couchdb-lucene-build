@@ -14,9 +14,14 @@ timeout=10000
 ; Default limit for search results
 limit=25
 
-; couchdb server mappings. The key name - here "local" -
-; must match the key given to the fti hook in the couchdb
-; configuration via the --local-key parameter.
+; Allow leading wildcard?
+allowLeadingWildcard=false
+
+; CouchDB server mappings: specify here the CouchDB instance to connect
+; to. The "local" keyword here is the server name, that is exposed on the URL
+; namespace after the /_fti path.
+; EXAMPLE: If your database is named "scriptoria", this will handle requests
+; for /_fti/local/scriptoria/_design.
 ;
 [local]
 url = http://localhost:5984/
